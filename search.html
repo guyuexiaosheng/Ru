@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>搜索</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<style type="text/css">
+			html{
+				font-size: 11.7188px;
+			}
+			.search-div{
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: #EFEFEF;
+				width: 100%;
+				height: 100%;
+			}
+			header{
+				height: 4.5rem;
+			    line-height: 4.5rem;
+			    background-color: #f9fafd;
+			    z-index: 2;
+			    border-bottom: 1px solid #e0e0e;
+			}
+			.search-div .back-up-page{
+				float: left;
+				display: inline-block;
+				background-image: url(../imgs/search/search-02.png);
+			    width: 5.4rem;
+			    height: 4.4rem;
+			    margin-left: .6rem;
+			    background-repeat: no-repeat;
+			    background-size: auto 2.5rem;
+			    background-position: left center;
+			}
+			.search-div>header>.search-form{
+				float: left;
+			    border: solid 1px #e0e0e0;
+			    border-radius: .3rem;
+			    font-size: 1.4rem;
+			    margin-top: .8rem;
+			    height: 2.6rem;
+			    line-height: 2.6rem;
+			    padding-left: 2.4rem;
+			    text-align: left;
+			    background: .6rem center no-repeat;
+			    background-size: 1.3rem;
+				background-image: url("../imgs/search/seach-01.png");
+			    z-index: 2;
+			}
+			.search-div header .search-form input{
+				border: 0;
+			    background-color: transparent;
+			    vertical-align: baseline;
+			    -webkit-appearance: none;
+			    font-size: 100%;
+			    outline: none;
+			} 
+			.search-div header>p{
+				padding: 0;
+				float: left;
+				text-align: center;
+			    color: #777;
+			    width: 6rem;
+    			height: 4.4rem;
+			}
+			article{
+				width: 100%;
+			}
+			article .search-list{
+				font-size: 1.2rem;
+			    color: #888;
+			    padding-top: 2.5rem;
+			    padding-left: 1.5rem;
+			    padding-bottom: 3rem;
+			}
+			article .search-list li{
+				float: left;
+			    border: solid 1px #e4e4e4;
+			    background-color: #FFF;
+			    margin: .6rem 1rem .4rem 0;
+			    padding: .8rem 1.5rem;
+			    border-radius: 2.7rem;
+			    color: #000;
+			}
+			.search-history .clear-history p{
+			    margin: 0 4.5rem;
+			    text-align: center;
+			    height: 4rem;
+			    line-height: 4rem;
+			    font-size: 1.4rem;
+			    color: #aaa;
+			    border: solid 1px #e0e0e0;
+			    border-radius: .5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="search-div">
+			<header>
+				<span class="back-up-page"></span>
+				<form class="search-form" method="post">
+					<input type="text" placeholder="请输入商品名称"/>
+				</form>
+				<p class="search-button">搜索</p>
+			</header>
+			<article>
+				<div class="search-list">
+					<p>热门搜索</p>
+					<ul>
+						<li>
+							<span class="search-food-list">大闸蟹</span>
+						</li>
+						<li>
+							<span class="search-food-list">水</span>
+						</li>
+						<li>
+							<span class="search-food-list">中秋月饼</span>
+						</li>
+						<li>
+							<span class="search-food-list">酸奶</span>
+						</li>
+						<li>
+							<span class="search-food-list">啤酒</span>
+						</li>
+						<li>
+							<span class="search-food-list">西瓜</span>
+						</li>
+						<li>
+							<span class="search-food-list">大荔冬枣</span>
+						</li>
+						<li>
+							<span class="search-food-list">贝尔蛋糕</span>
+						</li>
+						<li>
+							<span class="search-food-list">月盛斋</span>
+						</li>
+					</ul>
+				</div>
+				<div class="search-history search-list" style="display: none;">
+					<p>历史记录</p>
+					<ul>
+						
+					</ul>
+					<div class="clear-history">
+						<p>清空历史</p
+					</div>
+				</div>
+			</article>
+		</div>
+	</body>
+	<script src="../js/js/jquery-2.2.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var searchFoodList = $('.search-div .search-list ul li');
+		searchFoodList.on('click',function(){
+			$('.search-div .search-history').css({
+				display:"block"
+			})
+			var clone = $('.search-div .search-list ul li').eq($(this).index()).clone();
+			$('.search-div .search-history ul').append(clone); /*$('article').eq($(this).index())*/
+		})
+		$(' .clear-history').on('click',function(){
+			$('.search-div .search-history').empty();
+		})
+	</script>
+</html>
